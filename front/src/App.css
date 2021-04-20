@@ -1,11 +1,32 @@
+
 .App {
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
   text-align: center;
+  z-index: 10;
+
+  margin: auto;
+  margin-top: 5%;
 }
+h1{
+  color: pink;
+}
+input[type="file"] {
+    display: none;
+}
+.custom-file-input {
+    background-color: rgba(204, 204, 204, .3);
+    border: 1px solid #ccc;
+    border-radius:  5em;
 
+    margin: 50px;
 
+    display: inline-block;
+    padding: 6px 12px;
+    width: 33%;
+    height: 40px;
 
-
-
-.App-link {
-  color: #61dafb;
+    cursor: pointer;
 }
