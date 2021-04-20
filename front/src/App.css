@@ -20,6 +20,8 @@ input[type="file"] {
     background-color: rgba(204, 204, 204, .3);
     border: 1px solid #ccc;
     border-radius:  5em;
+    box-shadow: 15px 10px 12px 5px rgba(0,0,0,0.4),
+            4px 4px 5px 2px rgba(0,0,0,0.3) inset;
 
     margin: 50px;
 
