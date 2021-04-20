@@ -3,8 +3,11 @@ import flask from Flask, request, redirect
 from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 
+from .api.converter import convert
+
 app = Flask(__name__)
 
+app.register_blueprint(convert, url_prefix='/api/convert')
 
 CORS(app)
 
