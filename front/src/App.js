@@ -42,7 +42,7 @@ function App() {
               id="file-input"
               type="file"
               onChange={(e) => {
-                if (validFileType(e.target.files[0])) {
+                if (validFileType(e.target.files[0]) && e.target.files[0]) {
                   setVideoData(e.target.files[0]);
                 } else {
                   error();
