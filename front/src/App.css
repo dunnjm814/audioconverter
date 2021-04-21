@@ -7,14 +7,23 @@
   text-align: center;
   z-index: 10;
 
-  margin: auto;
+  /* margin: auto; */
   margin-top: 5%;
+}
+.submit-form{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 h1{
   color: pink;
 }
 input[type="file"] {
     display: none;
+}
+.input-wrap{
+  width: 100%;
 }
 .custom-file-input {
     background-color: rgba(204, 204, 204, .3);
@@ -45,7 +54,29 @@ input[type="file"] {
 }
 .error-box > p{
   padding: 0px 50px;
+}
+#upload{
+  display: inline-block;
+  position: absolute;
+  top: calc(80%);
+  font-size: 5em;
+  padding: 0;
+  outline: none;
+  border: none;
+  background: none;
 
+}
+svg{
+  display: inline-block;
+  vertical-align: middle;
+  margin-left:auto;
+   margin-right:auto;
+}
+svg path{
+fill: linear-gradient(
+130deg
+,#ff7a18,#af002d 41.07%,#319197 76.05%);
+/* fill:rosybrown; */
 }
 .hidden{
   border: 1px solid rgba(0,0,0, 1);

@@ -1,10 +1,12 @@
 import './App.css';
 import React, { useState } from "react";
+import { AiOutlineUpload, AiOutlineDownload } from "react-icons/ai";
 
 
 function App() {
-  const [videoData, setVideoData] = useState('')
+  const [videoData, setVideoData] = useState()
   const [hidden, setHidden] = useState(false)
+  const [mp3, setMp3] = useState('')
 
   const fileTypes = ["video/*"];
 
@@ -12,7 +14,11 @@ function App() {
     return fileTypes.includes(file.type);
   }
 
-  const onSubmit = () => {
+  const onSubmit = async() => {
+    const response = await fetch('/api/convert', {
+      method: "POST",
+      body: videoData
+    })
 
   }
 
@@ -26,20 +32,30 @@ function App() {
   return (
     <div className="App">
       <h1>Video to mp3 converter</h1>
-      <form onSubmit={onSubmit}>
-        <label htmlFor="file-input" className='custom-file-input'>
-          <input id="file-input" type="file" onChange={(e) => {
-            if (validFileType(e.target.files[0])) {
-              setVideoData(e.target.files[0]);
-            } else {
-              error()
-            }
-          }} accept="video/*"></input>
-          <div className={errorClasses}>
-            <p>This is not a video file,</p>
-            <p>Please try again.</p>
-          </div>
-        </label>
+      <form className="submit-form">
+        <div className="input-wrap">
+          <label htmlFor="file-input" className="custom-file-input">
+            <input
+              id="file-input"
+              type="file"
+              onChange={(e) => {
+                if (validFileType(e.target.files[0])) {
+                  setVideoData(e.target.files[0]);
+                } else {
+                  error();
+                }
+              }}
+              accept="video/*"
+            ></input>
+            <div className={errorClasses}>
+              <p>This is not a video file,</p>
+              <p>Please try again.</p>
+            </div>
+          </label>
+        </div>
+        <button id="upload" disabled={!videoData} onClick={onSubmit}>
+          <AiOutlineUpload />
+        </button>
       </form>
     </div>
   );
