@@ -32,3 +32,28 @@ input[type="file"] {
 
     cursor: pointer;
 }
+.error-box{
+  position: absolute;
+  border-radius:  5em;
+  top: calc(80%);
+  border: 1px solid rgba(0,0,0, 0);
+  background-color: rgba(204, 204, 204, .0);
+  height: 0;
+  color: rgb(90, 0, 0, 0);
+  font-size: 0;
+  transition: 1s ease-in-out;
+}
+.error-box > p{
+  padding: 0px 50px;
+
+}
+.hidden{
+  border: 1px solid rgba(0,0,0, 1);
+  background-color: rgba(204, 204, 204, .3);
+  box-shadow: 15px 10px 12px 5px rgba(0,0,0,0.4),
+            4px 4px 5px 2px rgba(0,0,0,0.3) inset;
+  height: calc(40%);
+  font-size: 17px;
+  text-align: center;
+  color: rgb(90, 0, 0, 1);
+}
