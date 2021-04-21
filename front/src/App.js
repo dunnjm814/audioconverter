@@ -8,20 +8,29 @@ function App() {
   const [hidden, setHidden] = useState(false)
   const [mp3, setMp3] = useState('')
 
-  const fileTypes = ["video/*"];
+  const fileTypes = ["video/*", "video/mp4"];
 
   function validFileType(file) {
     return fileTypes.includes(file.type);
   }
 
-  const onSubmit = async() => {
+  const onSubmit = async (e) => {
+    e.preventDefault()
+    const data = new FormData()
+    console.log('hopefully the mp4', videoData)
+    data.append('mp3', videoData)
+    console.log('hopefully a form object with mp4', data)
     const response = await fetch('/api/convert', {
       method: "POST",
-      body: videoData
+      body: data
     })
-    const converted = await response.json()
-    setMp3(converted)
-    console.log(mp3)
+    if (response.ok) {
+      const converted = await response.json()
+      setMp3(converted)
+      console.log(mp3)
+    } else {
+      window.alert("something went wrong :(");
+    }
 
   }
 

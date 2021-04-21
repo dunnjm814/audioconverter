@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 import imageio
 from moviepy.editor import *
 
@@ -8,13 +8,16 @@ from moviepy.editor import *
 convert = Blueprint('convert', __name__)
 
 
-@convert.route('')
+@convert.route('', methods=['POST'])
 def covert_mp4():
-  file = request.files[0]
+  file = request.files['mp3']
   print('hey its a file', file)
-  video = VideoFileClip(file)
-  audio = vid.audio
+  if file:
+    video = VideoFileClip(file)
+    audio = vid.audio
 
-  converted = audio.write_audiofile("converted.mp3")
+    converted = audio.write_audiofile("converted.mp3")
 
-  return  jsonify(converted)
+    return  jsonify(converted)
+  else:
+    return {'error': 'something went wrong :('}
