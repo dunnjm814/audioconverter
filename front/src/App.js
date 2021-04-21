@@ -19,6 +19,9 @@ function App() {
       method: "POST",
       body: videoData
     })
+    const converted = await response.json()
+    setMp3(converted)
+    console.log(mp3)
 
   }
 
