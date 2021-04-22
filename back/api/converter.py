@@ -2,8 +2,6 @@ import os
 from flask import Blueprint, jsonify, request
 import imageio
 from moviepy.editor import *
-from moviepy.audio import *
-
 
 
 convert = Blueprint('convert', __name__)
