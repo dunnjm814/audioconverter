@@ -1,5 +1,5 @@
 import os
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, send_from_directory
 import imageio
 from moviepy.editor import *
 from werkzeug.utils import *
@@ -15,16 +15,17 @@ def convert_mp4():
     filename = request.files['mp3'].filename
     print('hey its a file again', filename)
     safe_filename = secure_filename(filename)
-    video_file = os.path.join("/temp/", safe_filename)
+    video_file = os.path.join("/home/jasondunn/projects/audioconverter/back/temp/", safe_filename)
+    request.files['mp3'].save(video_file)
     print('hey its the file path', video_file)
     video_clip = VideoFileClip(video_file)
     print('hey its the VideoFileClip', video_clip)
     audio_clip = video_clip.audio
-    audio_clip.write_audiofile(os.path.join("/temp/", f"{safe_filename}-converted.mp3"))
+    audio_clip.write_audiofile(os.path.join("/home/jasondunn/projects/audioconverter/back/temp/", f"{safe_filename}-converted.mp3"))
 
     video_clip.close()
     audio_clip.close()
 
-    return jsonify(send_from_directory(os.path.join("/temp/", f"{safe_filename}-converted.mp3")))
+    return send_from_directory("/home/jasondunn/projects/audioconverter/back/temp/", f"{safe_filename}-converted.mp3")
   else:
     return {'error': 'something went wrong :('}
