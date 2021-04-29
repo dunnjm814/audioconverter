@@ -25,8 +25,8 @@ function App() {
       body: data
     })
     if (response.ok) {
-      const converted = await response.json()
-      setMp3(converted)
+      console.log(response)
+      setMp3(response)
       console.log(mp3)
     } else {
       window.alert("something went wrong :(");
