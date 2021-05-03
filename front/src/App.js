@@ -1,6 +1,8 @@
 import './App.css';
 import React, { useState } from "react";
 import { AiOutlineUpload, AiOutlineDownload } from "react-icons/ai";
+import Pipeline from 'pipeline'
+import * as fs from "fs";
 
 
 function App() {
@@ -14,24 +16,35 @@ function App() {
     return fileTypes.includes(file.type);
   }
 
-  const onSubmit = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault()
     const data = new FormData()
     console.log('hopefully the mp4', videoData)
     data.append('mp3', videoData)
     console.log('hopefully a form object with mp4', data)
-    const response = await fetch('/api/convert', {
+    fetch('/api/convert', {
       method: "POST",
       body: data
-    })
-    if (response.ok) {
-      console.log(response)
-      setMp3(response)
-      console.log(mp3)
-    } else {
-      window.alert("something went wrong :(");
-    }
+    }).then(response => response.body)
+      .then(body => {
+        const reader = body.getReader()
+        return reader.read()
+      })
+      .then(stream => new Response(stream))
+      .then(response => {
+        console.log(response)
+        response.text()
+      })
+      .then(blob => {
+        console.log(blob)
+        URL.createObjectURL(blob)
 
+      })
+      .then(url => console.log(url))
+      .catch(err => {
+        console.error(err)
+        window.alert("something went wrong :(");
+      })
   }
 
   const error = () => {
