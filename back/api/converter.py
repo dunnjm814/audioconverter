@@ -30,12 +30,9 @@ def convert_mp4():
     video_clip.close()
     audio_clip.close()
     send_the_mp3 = send_from_directory(temp_path, f"{safe_filename}-converted.mp3", as_attachment=True, cache_timeout=0)
-    # send_the_mp3 = send_file(temp_path, mimetype='audio/mpeg', attachment_filename=f"{safe_filename}-converted.mp3")
-    # send_the_mp3 = os.path.join(temp_path, f"{safe_filename}-converted.mp3")
+
     print(send_the_mp3)
-    # return send_from_directory(temp_path, f"{safe_filename}-converted.mp3", as_attachment=True, cache_timeout=0)
-    # return to_dict(send_the_mp3)
-    # return send_file(filename_or_fp=send_the_mp3, as_attachment=True, attachment_filename=f"{safe_filename}-converted.mp3")
+    
     return send_the_mp3
   else:
     return {'error': 'something went wrong :('}

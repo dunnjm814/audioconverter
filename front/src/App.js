@@ -1,8 +1,7 @@
 import './App.css';
 import React, { useState } from "react";
 import { AiOutlineUpload, AiOutlineDownload } from "react-icons/ai";
-import Pipeline from 'pipeline'
-import * as fs from "fs";
+
 
 
 function App() {
@@ -27,20 +26,20 @@ function App() {
       body: data
     }).then(response => response.body)
       .then(body => {
+        console.log(body)
         const reader = body.getReader()
+        console.log(reader)
         return reader.read()
       })
-      .then(stream => new Response(stream))
-      .then(response => {
-        console.log(response)
-        response.text()
-      })
-      .then(blob => {
+      .then(file => {
+        let blob = new Blob([file], { type: 'audio/mp3' })
         console.log(blob)
-        URL.createObjectURL(blob)
-
+        // let song = new Response(blob).text()
+        // console.log(song)
+        let track = new File([blob], 'your-track')
+        console.log(track)
+        setMp3(track)
       })
-      .then(url => console.log(url))
       .catch(err => {
         console.error(err)
         window.alert("something went wrong :(");
@@ -55,6 +54,7 @@ function App() {
   }
   const errorClasses = hidden ? "error-box hidden" : "error-box"
   return (
+    <>
     <div className="App">
       <h1>Video to mp3 converter</h1>
       <form className="submit-form">
@@ -83,6 +83,14 @@ function App() {
         </button>
       </form>
     </div>
+      <div className='divs'>
+    {mp3 ? <a id='download' href={mp3} download='your-file.mp3'>
+        <AiOutlineDownload />
+        </a>
+      :
+      null}
+      </div>
+    </>
   );
 }
 

@@ -66,6 +66,14 @@ input[type="file"] {
   background: none;
 
 }
+#download {
+  padding: 100px;
+  font-size: 5em;
+
+  outline: none;
+  border: none;
+  background: none;
+}
 svg{
   display: inline-block;
   vertical-align: middle;
@@ -87,4 +95,7 @@ fill: linear-gradient(
   font-size: 17px;
   text-align: center;
   color: rgb(90, 0, 0, 1);
+}
+.divs{
+  margin-top: 100px;
 }
