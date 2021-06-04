@@ -24,7 +24,7 @@ function App() {
     fetch('/api/convert', {
       method: "POST",
       body: data
-    }).then(response => response.body)
+    }).then(response =>{ return response.body})
       .then(body => {
         console.log(body)
         const reader = body.getReader()
@@ -32,6 +32,7 @@ function App() {
         return reader.read()
       })
       .then(file => {
+        console.log({file})
         let blob = new Blob([file], { type: 'audio/mp3' })
         console.log(blob)
         // let song = new Response(blob).text()
