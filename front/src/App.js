@@ -16,9 +16,7 @@ function App() {
   const onSubmit = (e) => {
     e.preventDefault();
     const data = new FormData();
-    console.log("hopefully the mp4", videoData);
     data.append("mp3", videoData);
-    console.log("hopefully a form object with mp4", data);
     fetch("/api/convert", {
       method: "POST",
       body: data,
@@ -29,41 +27,46 @@ function App() {
       .then((body) => {
         console.log(body); // this is the readableStream resolved from flask
         const reader = body.getReader();
-        // console.log(reader)
         // return reader.read()
-        return new ReadableStream({
+        let flaskMP3stream = new ReadableStream({
           start(controller) {
             return pump();
             function pump() {
-              return reader.read().then(({ done, value }) => {
+              let readStream = reader.read().then(({ done, value }) => {
+                console.log('done', done)
+                console.log('value', value)
                 if (done) {
+                  console.log('controller?', controller)
                   controller.close();
                   return;
                 }
+                console.log('controller value', value)
                 controller.enqueue(value);
                 return pump();
               });
+              console.log('readStream in finshed pump?', readStream)
+              return readStream
             }
           }
         });
+        console.log('flask mp3 stream post pump', flaskMP3stream)
+        return flaskMP3stream
       })
       .then(stream => {
         console.log({ stream });
         return new Response(stream);
       })
       .then((response) => {
-        console.log({ response });
-        let blob = new Blob([response], { type: "audio/mp3" });
+        console.log('stream as response object', response);
+        console.log('body of response object', response.body)
+        // let blob = new Blob([response], { type: "audio/mp3" });
+        let blob = response.blob()
         console.log(blob);
-        // let song = new Response(blob).text()
-        // console.log(song)
-        // let track = new File([blob], "your-track");
-        // console.log(track);
-        // setMp3(track);
         return blob
       })
       .then(blob => {
-        const url = URL.createObjectURL(blob)
+        let urlCreate = window.URL || window.webkitURL;
+        const url = urlCreate.createObjectURL(blob)
         console.log({ url })
         setMp3(url)
       })

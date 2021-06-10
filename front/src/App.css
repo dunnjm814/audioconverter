@@ -58,13 +58,19 @@ input[type="file"] {
 #upload{
   display: inline-block;
   position: absolute;
+
   top: calc(80%);
   font-size: 5em;
   padding: 0;
+
   outline: none;
   border: none;
   background: none;
-cursor: pointer;
+  cursor: pointer;
+
+  color: #000;
+
+  transition: 0.5s;
 }
 #download {
   padding: 100px;
@@ -72,10 +78,17 @@ cursor: pointer;
 
   outline: none;
   border: none;
+
   background: none;
   cursor: pointer;
+
+  color: #000;
+
+  transition: 0.5s;
 }
-#download:hover{
+#download:hover, #upload:hover{
+  color: rgb(255, 255, 255);
+  filter: drop-shadow(0.35rem 0.35rem 0.2rem rgba(0, 0, 0, 0.7))
 }
 svg{
   display: inline-block;
@@ -87,7 +100,6 @@ svg path{
 fill: linear-gradient(
 130deg
 ,#ff7a18,#af002d 41.07%,#319197 76.05%);
-/* fill:rosybrown; */
 }
 .hidden{
   border: 1px solid rgba(0,0,0, 1);
