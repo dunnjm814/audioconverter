@@ -27,9 +27,12 @@ input[type="file"] {
 }
 .custom-file-input {
     background-color: rgba(204, 204, 204, .3);
-    border: 1px solid #ccc;
+
+    border: 1px solid rgb(173, 173, 173);
+    color: rgb(173, 173, 173);
+
     border-radius:  5em;
-    box-shadow: 15px 10px 12px 5px rgba(0,0,0,0.4),
+    box-shadow: 7px 5px 7px 5px rgba(0,0,0,0.4),
             4px 4px 5px 2px rgba(0,0,0,0.3) inset;
 
     margin: 50px;
@@ -40,7 +43,16 @@ input[type="file"] {
     height: 40px;
 
     cursor: pointer;
+
+    transition: 0.5s;
 }
+.custom-file-input:hover {
+  border: 1px solid #ccc;
+  color: #ccc;
+  box-shadow: 15px 10px 12px 5px rgba(0,0,0,0.4),
+            4px 4px 5px 2px rgba(0,0,0,0.3) inset;
+}
+
 .error-box{
   position: absolute;
   border-radius:  5em;
@@ -86,9 +98,14 @@ input[type="file"] {
 
   transition: 0.5s;
 }
-#download:hover, #upload:hover{
+#download:hover,
+#upload:hover:enabled{
   color: rgb(255, 255, 255);
   filter: drop-shadow(0.35rem 0.35rem 0.2rem rgba(0, 0, 0, 0.7))
+}
+#upload:disabled{
+  color: rgb(38,38,38);
+  cursor: default;
 }
 svg{
   display: inline-block;
