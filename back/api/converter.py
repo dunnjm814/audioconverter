@@ -1,6 +1,6 @@
 import os
-from flask import Blueprint, request, send_from_directory, Response
-import imageio
+from flask import Blueprint, request, send_from_directory
+from uuid import uuid4
 from moviepy.editor import *
 from werkzeug.utils import *
 
@@ -8,10 +8,21 @@ from werkzeug.utils import *
 convert = Blueprint('convert', __name__)
 
 
+def temp_dir_gen():
+  os.getcwd()
+  rand_dir_name=uuid4()
+  temp_path="/home/jasondunn/projects/audioconverter/back/temp/"
+  rand_temp_dir=os.path.join(temp_path, str(rand_dir_name))
+  os.mkdir(rand_temp_dir)
+  return rand_temp_dir
+
+
 @convert.route('', methods=['POST'])
 def convert_mp4():
   if request.files['mp3'].filename:
     os.getcwd()
+    test = temp_dir_gen()
+    print(test)
     temp_path = "/home/jasondunn/projects/audioconverter/back/temp/"
     filename = request.files['mp3'].filename
     safe_filename = secure_filename(filename)
