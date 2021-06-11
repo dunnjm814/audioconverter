@@ -25,49 +25,29 @@ function App() {
         return response.body;
       })
       .then((body) => {
-        console.log(body); // this is the readableStream resolved from flask
         const reader = body.getReader();
-        // return reader.read()
         let flaskMP3stream = new ReadableStream({
           start(controller) {
             return pump();
             function pump() {
-              let readStream = reader.read().then(({ done, value }) => {
-                console.log('done', done)
-                console.log('value', value)
+              return reader.read().then(({ done, value }) => {
                 if (done) {
-                  console.log('controller?', controller)
                   controller.close();
                   return;
                 }
-                console.log('controller value', value)
                 controller.enqueue(value);
                 return pump();
               });
-              console.log('readStream in finshed pump?', readStream)
-              return readStream
             }
           }
         });
-        console.log('flask mp3 stream post pump', flaskMP3stream)
         return flaskMP3stream
       })
-      .then(stream => {
-        console.log({ stream });
-        return new Response(stream);
-      })
-      .then((response) => {
-        console.log('stream as response object', response);
-        console.log('body of response object', response.body)
-        // let blob = new Blob([response], { type: "audio/mp3" });
-        let blob = response.blob()
-        console.log(blob);
-        return blob
-      })
+      .then(stream => new Response(stream))
+      .then((response) => response.blob())
       .then(blob => {
         let urlCreate = window.URL || window.webkitURL;
         const url = urlCreate.createObjectURL(blob)
-        console.log({ url })
         setMp3(url)
       })
       .catch((err) => {
@@ -90,6 +70,7 @@ function App() {
         <form className="submit-form">
           <div className="input-wrap">
             <label htmlFor="file-input" className="custom-file-input">
+              Please select a video file
               <input
                 id="file-input"
                 type="file"

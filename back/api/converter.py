@@ -1,5 +1,5 @@
 import os
-from flask import Blueprint, jsonify, request, send_from_directory, make_response, send_file
+from flask import Blueprint, request, send_from_directory, Response
 import imageio
 from moviepy.editor import *
 from werkzeug.utils import *
@@ -7,11 +7,6 @@ from werkzeug.utils import *
 
 convert = Blueprint('convert', __name__)
 
-
-def to_dict(c_file):
-  return {
-    'mp3': c_file
-  }
 
 @convert.route('', methods=['POST'])
 def convert_mp4():
@@ -29,10 +24,11 @@ def convert_mp4():
 
     video_clip.close()
     audio_clip.close()
-    send_the_mp3 = send_from_directory(temp_path, f"{safe_filename}-converted.mp3", as_attachment=True, cache_timeout=0)
+    send_the_mp3 = send_from_directory(temp_path, f"{safe_filename}-converted.mp3", mimetype='audio/wav', as_attachment=True, cache_timeout=0)
 
     print(send_the_mp3)
-    
+
     return send_the_mp3
+
   else:
     return {'error': 'something went wrong :('}
