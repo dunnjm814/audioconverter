@@ -46,7 +46,7 @@ def convert_mp4():
     send_the_mp3 = send_from_directory(temp_path, f"{safe_filename}-converted.mp3", mimetype='audio/wav', as_attachment=True, cache_timeout=0)
 
     print(send_the_mp3)
-    # threading.Thread(target=temp_file_cleanup(test)).start()
+    
     threading.Timer(15.0, lambda: temp_file_cleanup(test)).start()
 
     return send_the_mp3
