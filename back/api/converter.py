@@ -28,10 +28,7 @@ def temp_file_cleanup(path):
 @convert.route('', methods=['POST'])
 def convert_mp4():
   if request.files['mp3'].filename:
-    os.getcwd()
-    test = temp_dir_gen()
-    print(test)
-    temp_path = "/home/jasondunn/projects/audioconverter/back/temp/"
+    temp_path = temp_dir_gen()
     filename = request.files['mp3'].filename
     safe_filename = secure_filename(filename)
 
@@ -43,11 +40,11 @@ def convert_mp4():
 
     video_clip.close()
     audio_clip.close()
-    send_the_mp3 = send_from_directory(temp_path, f"{safe_filename}-converted.mp3", mimetype='audio/wav', as_attachment=True, cache_timeout=0)
+    send_the_mp3 = send_from_directory(temp_path, f"{safe_filename}-converted.mp3", mimetype='audio/mpeg', as_attachment=True, cache_timeout=0)
 
     print(send_the_mp3)
-    
-    threading.Timer(15.0, lambda: temp_file_cleanup(test)).start()
+
+    threading.Timer(15.0, lambda: temp_file_cleanup(temp_path)).start()
 
     return send_the_mp3
 
