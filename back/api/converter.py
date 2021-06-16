@@ -10,9 +10,9 @@ convert = Blueprint('convert', __name__)
 
 
 def temp_dir_gen():
-  os.getcwd()
+  cwd=os.getcwd()
   rand_dir_name=uuid4()
-  temp_path="/home/jasondunn/projects/audioconverter/back/temp/"
+  temp_path=f"{cwd}/back/temp/"
   rand_temp_dir=os.path.join(temp_path, str(rand_dir_name))
   os.mkdir(rand_temp_dir)
   return rand_temp_dir

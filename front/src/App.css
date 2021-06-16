@@ -17,7 +17,7 @@
   justify-content: center;
 }
 h1{
-  color: pink;
+  color: #C3DEBC;
 }
 input[type="file"] {
     display: none;
@@ -29,7 +29,7 @@ input[type="file"] {
     background-color: rgba(204, 204, 204, .3);
 
     border: 1px solid rgb(173, 173, 173);
-    color: rgb(173, 173, 173);
+    color: #C3DEBC;
 
     border-radius:  5em;
     box-shadow: 7px 5px 7px 5px rgba(0,0,0,0.4),
@@ -48,7 +48,7 @@ input[type="file"] {
 }
 .custom-file-input:hover {
   border: 1px solid #ccc;
-  color: #ccc;
+  color: #C3DEBC;
   box-shadow: 15px 10px 12px 5px rgba(0,0,0,0.4),
             4px 4px 5px 2px rgba(0,0,0,0.3) inset;
 }
@@ -100,7 +100,7 @@ input[type="file"] {
 }
 #download:hover,
 #upload:hover:enabled{
-  color: rgb(255, 255, 255);
+  color: #C3DEBC;
   filter: drop-shadow(0.35rem 0.35rem 0.2rem rgba(0, 0, 0, 0.7))
 }
 #upload:disabled{
@@ -113,11 +113,7 @@ svg{
   margin-left:auto;
   margin-right:auto;
 }
-svg path{
-fill: linear-gradient(
-130deg
-,#ff7a18,#af002d 41.07%,#319197 76.05%);
-}
+
 .hidden{
   border: 1px solid rgba(0,0,0, 1);
   background-color: rgba(204, 204, 204, .3);
