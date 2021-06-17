@@ -1,11 +1,12 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AiOutlineUpload, AiOutlineDownload } from "react-icons/ai";
 
 function App() {
   const [videoData, setVideoData] = useState();
   const [hidden, setHidden] = useState(false);
   const [mp3, setMp3] = useState("");
+  const [download, setDownload] = useState("");
 
   const fileTypes = ["video/*", "video/mp4"];
 
@@ -13,8 +14,18 @@ function App() {
     return fileTypes.includes(file.type);
   }
 
+  function removeExt(fileName) {
+    return fileName?.slice(0, fileName?.indexOf("."));
+  }
+
+  useEffect(() => {
+    let downloadName = removeExt(videoData?.name)
+    setDownload(downloadName)
+  }, [videoData])
+
   const onSubmit = (e) => {
     e.preventDefault();
+    console.log(videoData.name)
     const data = new FormData();
     data.append("mp3", videoData);
     fetch("/api/convert", {
@@ -63,6 +74,7 @@ function App() {
     setHidden((prev) => !prev);
   };
   const errorClasses = hidden ? "error-box hidden" : "error-box";
+  const inputText = videoData ? videoData.name : "Please select a video file";
   return (
     <>
       <div className="App">
@@ -70,7 +82,7 @@ function App() {
         <form className="submit-form">
           <div className="input-wrap">
             <label htmlFor="file-input" className="custom-file-input">
-              Please select a video file
+              {inputText}
               <input
                 id="file-input"
                 type="file"
@@ -94,9 +106,9 @@ function App() {
           </button>
         </form>
       </div>
-      <div className="divs">
+      <div className="download">
         {mp3 ? (
-          <a id="download" href={mp3} download="your-file.mp3">
+          <a id="download" href={mp3} download={`${download}.mp3`}>
             <AiOutlineDownload />
           </a>
         ) : null}

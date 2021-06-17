@@ -40,6 +40,7 @@ input[type="file"] {
     display: inline-block;
     padding: 6px 12px;
     width: 33%;
+    min-width: 300px;
     height: 40px;
 
     cursor: pointer;
@@ -116,15 +117,19 @@ svg{
 
 .hidden{
   border: 1px solid rgba(0,0,0, 1);
-  background-color: rgba(204, 204, 204, .3);
+  background-color: rgba(204, 204, 204, 1);
   box-shadow: 15px 10px 12px 5px rgba(0,0,0,0.4),
             4px 4px 5px 2px rgba(0,0,0,0.3) inset;
+
   height: calc(40%);
+  z-index: 20;
+
   font-size: 17px;
+  font-weight: bold;
   text-align: center;
   color: rgb(90, 0, 0, 1);
 }
-.divs{
+.download{
   display: grid;
   place-items: center;
   margin-top: 100px;
