@@ -107,11 +107,11 @@ function App() {
         </form>
       </div>
       <div className="download">
-        {mp3 ? (
+        {mp3 && (
           <a id="download" href={mp3} download={`${download}.mp3`}>
             <AiOutlineDownload />
           </a>
-        ) : null}
+        )}
       </div>
     </>
   );
