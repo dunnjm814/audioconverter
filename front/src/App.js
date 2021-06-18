@@ -112,6 +112,15 @@ function App() {
           </a>
         )}
       </div>
+      <div class="github-ribbon">
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://github.com/dunnjm814/audioconverter"
+        >
+          Find me on GitHub
+        </a>
+      </div>
     </>
   );
 }
