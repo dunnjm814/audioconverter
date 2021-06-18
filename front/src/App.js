@@ -25,7 +25,6 @@ function App() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(videoData.name)
     const data = new FormData();
     data.append("mp3", videoData);
     fetch("/api/convert", {

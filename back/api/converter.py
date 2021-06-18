@@ -42,8 +42,6 @@ def convert_mp4():
     audio_clip.close()
     send_the_mp3 = send_from_directory(temp_path, f"{safe_filename}-converted.mp3", mimetype='audio/mpeg', as_attachment=True, cache_timeout=0)
 
-    print(send_the_mp3)
-
     threading.Timer(15.0, lambda: temp_file_cleanup(temp_path)).start()
 
     return send_the_mp3
