@@ -3,7 +3,7 @@ FROM node:12 AS build-stage
 WORKDIR /react-app
 COPY react-app/. .
 
-ENV REACT_APP_BASE_URL=<azure_URL>
+ENV REACT_APP_BASE_URL=https://video2mp3.azurewebsites.net
 
 RUN npm install
 RUN npm run build
@@ -24,4 +24,4 @@ COPY --from=build-stage /react-app/build/* app/static/
 RUN pip install -r requirements.txt
 RUN pip install psycopg2
 
-CMD gunicorn back:back
+CMD gunicorn back:app
