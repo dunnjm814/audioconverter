@@ -35,18 +35,11 @@
   z-index: 100;
 }
 
-#modal-content > a  {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+#modal-content {
+  display: grid;
+  place-items: center;
 }
-#modal-content > span  {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+
 
 
 

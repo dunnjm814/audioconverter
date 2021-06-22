@@ -20,11 +20,16 @@ function Loading({loading, setLoading, mp3, download}) {
           }}
         >
           {mp3 ? (
-            <a id="download" href={mp3} download={`${download}.mp3`}>
-              <AiOutlineDownload />
-            </a>
+            <div id="download-wrap">
+              <a id="download" href={mp3} download={`${download}.mp3`}>
+                <AiOutlineDownload />
+              </a>
+              <span id="download-text" className="convert-text">
+                Download your MP3
+              </span>
+            </div>
           ) : (
-            <span id="download" >
+            <span id="download">
               <WaveLoading />
             </span>
           )}

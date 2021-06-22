@@ -4,7 +4,6 @@ import { AiOutlineUpload } from "react-icons/ai";
 import Loading from "./loading/Loading";
 
 
-
 function App() {
   const [videoData, setVideoData] = useState();
   const [hidden, setHidden] = useState(false);
@@ -108,7 +107,7 @@ function App() {
           <button id="upload" disabled={!videoData} onClick={onSubmit}>
             <AiOutlineUpload />
           </button>
-          {videoData && (<span id="convert-text">Convert your video</span>)}
+          {videoData && (<span className="convert-text">Convert your video</span>)}
         </form>
       </div>
       <div className="download">
@@ -120,11 +119,6 @@ function App() {
             download={download}
           />
         )}
-        {/* {mp3 && (
-          <a id="download" href={mp3} download={`${download}.mp3`}>
-            <AiOutlineDownload />
-          </a>
-        )} */}
       </div>
       <div class="github-ribbon">
         <a
