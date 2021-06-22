@@ -1,11 +1,24 @@
-# audioconverter
+# Video2MP3
 
-example of how to set up favicon inside `manifest.json`.
+![audioConverterLogo](https://user-images.githubusercontent.com/71041585/122623969-0e8e4580-d053-11eb-9b53-edfc19e6519f.png)
 
-```json
-{
-  "src": "favicon.ico",
-  "sizes": "64x64 32x32 24x24 16x16",
-  "type": "image/x-icon"
-}
-```
+## Live Link
+
+* [Video2MP3](https://video2audio.herokuapp.com/)
+
+## The Video2MP3 web application was built with
+
+* React.js
+* Javascript
+* Node.Js
+* Python
+* Flask
+* MoviePy
+
+## What is Video2MP3?
+
+This is a web application dedicated to converting video files from your pc or cellular device into mp3 formatted audio files for download. I created this web application primarily with audio sampling in mind for use in tandem with other applications for music production, however there are plenty of other use cases within education. Record a video of a particularly challenging drum part, extract the audio, and slow down the audio in your favorite audio engineering platform.
+
+## Whats next?
+
+I would like to maintain this app and continue to offer more services such as incorporating python-youtube library, and offer other download formats instead of just MP3. I would also like to create accounts associated with this application so users can access previously converted videos in one convenient location.
