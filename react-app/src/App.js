@@ -108,11 +108,17 @@ function App() {
           <button id="upload" disabled={!videoData} onClick={onSubmit}>
             <AiOutlineUpload />
           </button>
+          {videoData && (<span id="convert-text">Convert your video</span>)}
         </form>
       </div>
       <div className="download">
         {loading && (
-          <Loading loading={loading} setLoading={setLoading} mp3={mp3} download={download}/>
+          <Loading
+            loading={loading}
+            setLoading={setLoading}
+            mp3={mp3}
+            download={download}
+          />
         )}
         {/* {mp3 && (
           <a id="download" href={mp3} download={`${download}.mp3`}>
