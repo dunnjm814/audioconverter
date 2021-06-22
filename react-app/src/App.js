@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { AiOutlineUpload, AiOutlineDownload } from "react-icons/ai";
+import { AiOutlineUpload } from "react-icons/ai";
 import Loading from "./loading/Loading";
 
 

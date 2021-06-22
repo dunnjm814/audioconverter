@@ -8,7 +8,7 @@ function Loading({loading, setLoading, mp3, download}) {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    setShowModal(!showModal)
+    setShowModal(s => !s)
   }, [loading])
 
   return (
@@ -24,7 +24,7 @@ function Loading({loading, setLoading, mp3, download}) {
               <AiOutlineDownload />
             </a>
           ) : (
-            <span>
+            <span id="download" >
               <WaveLoading />
             </span>
           )}
