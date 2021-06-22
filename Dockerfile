@@ -1,7 +1,7 @@
 FROM node:12 AS build-stage
 
-WORKDIR /front
-COPY front/. .
+WORKDIR /react-app
+COPY react-app/. .
 
 ENV REACT_APP_BASE_URL=https://video2audio.herokuapp.com/
 
@@ -19,9 +19,9 @@ EXPOSE 8000
 
 WORKDIR /var/www
 COPY . .
-COPY --from=build-stage /front/build/* app/static/
+COPY --from=build-stage /react-app/build/* app/static/
 
 RUN pip install -r requirements.txt
 RUN pip install psycopg2
 
-CMD gunicorn back:back
+CMD gunicorn back:app
