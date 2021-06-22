@@ -1,12 +1,16 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import { AiOutlineUpload, AiOutlineDownload } from "react-icons/ai";
+import Loading from "./loading/Loading";
+
+
 
 function App() {
   const [videoData, setVideoData] = useState();
   const [hidden, setHidden] = useState(false);
   const [mp3, setMp3] = useState("");
   const [download, setDownload] = useState("");
+  const [loading, setLoading] = useState(true)
 
   const fileTypes = ["video/*", "video/mp4"];
 
@@ -106,6 +110,9 @@ function App() {
         </form>
       </div>
       <div className="download">
+        {loading && (
+          <Loading />
+        )}
         {mp3 && (
           <a id="download" href={mp3} download={`${download}.mp3`}>
             <AiOutlineDownload />
