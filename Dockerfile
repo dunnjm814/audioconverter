@@ -1,7 +1,7 @@
 FROM node:12 AS build-stage
 
-WORKDIR /react-app
-COPY react-app/. .
+WORKDIR /front
+COPY front/. .
 
 ENV REACT_APP_BASE_URL=https://video2audio.herokuapp.com/
 
