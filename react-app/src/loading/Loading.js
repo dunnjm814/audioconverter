@@ -14,22 +14,24 @@ function Loading({loading, setLoading, mp3, download}) {
   return (
     <>
       {showModal && (
-        <Modal onClose={() => {
-          setLoading(false)
-
-        }}>
-          {mp3 ?
-            (
-          <a id="download" href={mp3} download={`${download}.mp3`}>
-            <AiOutlineDownload />
-          </a>
-          )
-          :  <WaveLoading />
-          }
+        <Modal
+          onClose={() => {
+            setLoading(false);
+          }}
+        >
+          {mp3 ? (
+            <a id="download" href={mp3} download={`${download}.mp3`}>
+              <AiOutlineDownload />
+            </a>
+          ) : (
+            <span>
+              <WaveLoading />
+            </span>
+          )}
         </Modal>
       )}
     </>
-  )
+  );
 }
 
 export default Loading

@@ -7,6 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 }
 
 #modal-background {
@@ -15,7 +16,7 @@
   right: 0;
   left: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 100;
 }
 
 #modal-content {
@@ -26,30 +27,22 @@
   animation-duration: 0.8s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-out;
+  z-index: 100;
 }
 
-#modal-content > form {
-  width: 600px;
-  height: 100%;
-  border-radius: 12px;
-  padding: 40px 20px 40px 20px;
-  position: relative;
+#modal-content > a  {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+}
+#modal-content > span  {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-#modal-content > form > div > input {
-  border-radius: 8px;
-  width: 520px;
-  height: 50px;
-  border: 0.25px solid rgb(170, 166, 166);
-  padding-left: 10px;
-  margin-bottom: 10px;
-  font-size: 16px;
-}
 
 
 @keyframes slideup {
