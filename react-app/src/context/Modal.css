@@ -1,0 +1,53 @@
+#modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+#modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, .6);
+}
+
+#modal-content {
+  position: absolute;
+  background: rgba( 255, 255, 255, 0.60 );
+  box-shadow: 0 8px 32px 0 rgba( 195, 222, 188, 0.37 );
+  backdrop-filter: blur( 9.0px );
+  -webkit-backdrop-filter: blur( 9.0px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  animation-name: slideup;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  z-index: 100;
+}
+
+#modal-content {
+  display: grid;
+  place-items: center;
+}
+
+
+
+
+@keyframes slideup {
+  0% {
+    bottom: 0;
+  }
+  100% {
+    bottom: 50vh;
+  }
+}

@@ -1,12 +1,15 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { AiOutlineUpload, AiOutlineDownload } from "react-icons/ai";
+import { AiOutlineUpload } from "react-icons/ai";
+import Loading from "./loading/Loading";
+
 
 function App() {
   const [videoData, setVideoData] = useState();
   const [hidden, setHidden] = useState(false);
   const [mp3, setMp3] = useState("");
   const [download, setDownload] = useState("");
+  const [loading, setLoading] = useState(false)
 
   const fileTypes = ["video/*", "video/mp4"];
 
@@ -27,6 +30,7 @@ function App() {
     e.preventDefault();
     const data = new FormData();
     data.append("mp3", videoData);
+    setLoading(loading => !loading)
     fetch("/api/convert", {
       method: "POST",
       body: data,
@@ -103,13 +107,17 @@ function App() {
           <button id="upload" disabled={!videoData} onClick={onSubmit}>
             <AiOutlineUpload />
           </button>
+          {videoData && (<span className="convert-text">Convert your video</span>)}
         </form>
       </div>
       <div className="download">
-        {mp3 && (
-          <a id="download" href={mp3} download={`${download}.mp3`}>
-            <AiOutlineDownload />
-          </a>
+        {loading && (
+          <Loading
+            loading={loading}
+            setLoading={setLoading}
+            mp3={mp3}
+            download={download}
+          />
         )}
       </div>
       <div class="github-ribbon">

@@ -22,7 +22,7 @@ body:after {
 }
 body:after, body:before {
     display: block;
-    height: 600px;
+    height: 800px;
     position: absolute;
     top: 0;
     left: 0;
