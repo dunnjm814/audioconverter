@@ -10,7 +10,7 @@ function App() {
   const [hidden, setHidden] = useState(false);
   const [mp3, setMp3] = useState("");
   const [download, setDownload] = useState("");
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
 
   const fileTypes = ["video/*", "video/mp4"];
 
@@ -31,6 +31,7 @@ function App() {
     e.preventDefault();
     const data = new FormData();
     data.append("mp3", videoData);
+    setLoading(loading => !loading)
     fetch("/api/convert", {
       method: "POST",
       body: data,
@@ -111,13 +112,13 @@ function App() {
       </div>
       <div className="download">
         {loading && (
-          <Loading />
+          <Loading loading={loading} setLoading={setLoading} mp3={mp3} download={download}/>
         )}
-        {mp3 && (
+        {/* {mp3 && (
           <a id="download" href={mp3} download={`${download}.mp3`}>
             <AiOutlineDownload />
           </a>
-        )}
+        )} */}
       </div>
       <div class="github-ribbon">
         <a
