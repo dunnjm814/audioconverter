@@ -17,12 +17,17 @@
   left: 0;
   bottom: 0;
   z-index: 100;
+  background-color: rgba(0, 0, 0, .6);
 }
 
 #modal-content {
   position: absolute;
-  background-color: white;
-  border-radius: 12px;
+  background: rgba( 255, 255, 255, 0.60 );
+  box-shadow: 0 8px 32px 0 rgba( 195, 222, 188, 0.37 );
+  backdrop-filter: blur( 9.0px );
+  -webkit-backdrop-filter: blur( 9.0px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
   animation-name: slideup;
   animation-duration: 0.8s;
   animation-fill-mode: forwards;
