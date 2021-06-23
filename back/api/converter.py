@@ -1,10 +1,9 @@
 import os
-import threading
-from flask import Blueprint, request, send_from_directory
+from flask import Blueprint, request, send_from_directory, g
 from uuid import uuid4
 from moviepy.editor import *
 from werkzeug.utils import *
-from werkzeug.wrappers import Response
+
 
 
 convert = Blueprint('convert', __name__)
@@ -19,17 +18,11 @@ def temp_dir_gen():
   return rand_temp_dir
 
 
-def temp_file_cleanup(path):
-  if path:
-    os.system(f'rm -rf {path}')
-  else:
-    return {'error': 'something went wrong :('}
-
-
 @convert.route('', methods=['POST'])
 def convert_mp4():
   if request.files['mp3'].filename:
     temp_path = temp_dir_gen()
+    g.path=temp_path
     filename = request.files['mp3'].filename
     safe_filename = secure_filename(filename)
 
@@ -42,8 +35,6 @@ def convert_mp4():
     video_clip.close()
     audio_clip.close()
     send_the_mp3 = send_from_directory(temp_path, f"{safe_filename}-converted.mp3", mimetype='audio/mpeg', as_attachment=True, cache_timeout=0)
-
-    threading.Timer(900.0, lambda: temp_file_cleanup(temp_path)).start()
 
     return send_the_mp3
 
