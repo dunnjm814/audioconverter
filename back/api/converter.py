@@ -4,6 +4,7 @@ from flask import Blueprint, request, send_from_directory
 from uuid import uuid4
 from moviepy.editor import *
 from werkzeug.utils import *
+from werkzeug.wrappers import Response
 
 
 convert = Blueprint('convert', __name__)
@@ -42,7 +43,7 @@ def convert_mp4():
     audio_clip.close()
     send_the_mp3 = send_from_directory(temp_path, f"{safe_filename}-converted.mp3", mimetype='audio/mpeg', as_attachment=True, cache_timeout=0)
 
-    threading.Timer(15.0, lambda: temp_file_cleanup(temp_path)).start()
+    threading.Timer(900.0, lambda: temp_file_cleanup(temp_path)).start()
 
     return send_the_mp3
 
