@@ -41,7 +41,8 @@ def inject_csrf_token(response):
         samesite='Strict'
         if os.environ.get('FLASK_ENV') == 'production' else None,
         httponly=True)
-    temp_file_cleanup(g.path)
+    if g.path:
+        temp_file_cleanup(g.path)
     return response
 
 @app.route('/', defaults={'path': ''})
