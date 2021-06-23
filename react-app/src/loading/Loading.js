@@ -29,9 +29,14 @@ function Loading({loading, setLoading, mp3, download}) {
               </span>
             </div>
           ) : (
-            <span id="download">
-              <WaveLoading />
-            </span>
+            <div id="download-wrap">
+              <span id="download">
+                <WaveLoading />
+              </span>
+              <span id="download-text" className="convert-text">
+                Your video is being converted...
+              </span>
+            </div>
           )}
         </Modal>
       )}
