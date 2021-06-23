@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, redirect
+from flask import Flask, request, redirect, g
 from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 
@@ -14,6 +14,12 @@ app.register_blueprint(convert, url_prefix='/api/convert')
 
 CORS(app)
 
+
+def temp_file_cleanup(path):
+    if path:
+        os.system(f'rm -rf {path}')
+    else:
+        return {'error': 'something went wrong :('}
 
 @app.before_request
 def https_redirect():
@@ -35,6 +41,7 @@ def inject_csrf_token(response):
         samesite='Strict'
         if os.environ.get('FLASK_ENV') == 'production' else None,
         httponly=True)
+    temp_file_cleanup(g.path)
     return response
 
 @app.route('/', defaults={'path': ''})
