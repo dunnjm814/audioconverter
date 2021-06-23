@@ -24,6 +24,7 @@ def temp_file_cleanup(path):
 @app.before_request
 def https_redirect():
     if os.environ.get('FLASK_ENV') == 'production':
+        g.path=''
         if request.headers.get('X-Forwarded-Proto') == 'http':
             url = request.url.replace('http://', 'https://', 1)
             code = 301
