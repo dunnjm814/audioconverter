@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import { AiOutlineUpload } from "react-icons/ai";
 import Loading from "./loading/Loading";
+import { fileTypes } from "./utils/mimetype"
 
 
 function App() {
@@ -11,7 +12,6 @@ function App() {
   const [download, setDownload] = useState("");
   const [loading, setLoading] = useState(false)
 
-  const fileTypes = ["video/*", "video/mp4"];
 
   function validFileType(file) {
     return fileTypes.includes(file.type);
