@@ -1,0 +1,14 @@
+.nav{
+
+    z-index: 1;
+    height: 3rem;
+    width: 100%;
+    position: relative;
+    top: 0;
+
+    display: flex;
+    justify-content: flex-end;
+
+    background-color: aqua;
+
+}

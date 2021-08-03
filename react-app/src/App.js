@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { AiOutlineUpload } from "react-icons/ai";
 import Loading from "./loading/Loading";
 import { fileTypes } from "./utils/mimetype"
+import Navigation from "./navigation/navigation";
 
 
 function App() {
@@ -80,6 +81,9 @@ function App() {
   const inputText = videoData ? videoData.name : "Please select a video file";
   return (
     <>
+      <header>
+        <Navigation />
+      </header>
       <div className="App">
         <h1>Video to mp3 converter</h1>
         <form className="submit-form">
