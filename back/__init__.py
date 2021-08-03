@@ -2,7 +2,7 @@ import os
 from flask import Flask, request, redirect, g
 from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect, generate_csrf
-
+from flask_pymongo import PyMongo
 from .api.converter import convert
 
 from .config import Config
@@ -13,7 +13,7 @@ app.config.from_object(Config)
 app.register_blueprint(convert, url_prefix='/api/convert')
 
 CORS(app)
-
+PyMongo(app)
 
 def temp_file_cleanup(path):
     if path:
