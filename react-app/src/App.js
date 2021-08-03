@@ -124,7 +124,7 @@ function App() {
           />
         )}
       </div>
-      <div class="github-ribbon">
+      <div className="github-ribbon">
         <a
           target="_blank"
           rel="noreferrer"

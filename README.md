@@ -20,6 +20,8 @@
 * run `pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt` to install python and flask dependencies
 * run `pipenv shell` to enter virtual pip environment and `flask run` to start the flask server.
 * In a new terminal `cd react-app && npm install` to change to client directory and install react-app dependencies. 
+Note: If you Add any dependencies make sure to lock the requirements.txt file prior to deployment
+Run `pipenv lock -r > requirements.txt`
 
 
 ## What is Video2MP3?
