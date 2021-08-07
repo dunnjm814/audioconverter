@@ -14,8 +14,10 @@ function Navigation() {
     
     return (
         <div className="nav">
-            <button className="login" onClick={login}>Login</button>
-            <button className="signup" onClick={signup}>Signup</button>
+            <div className="button-wrap">
+                <button className="login" onClick={login}>Login</button>
+                <button className="signup" onClick={signup}>Signup</button>
+            </div>
         </div>
     )
 }

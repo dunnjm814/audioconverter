@@ -12,3 +12,37 @@
     background-color: aqua;
 
 }
+.button-wrap{
+    background: linear-gradient(
+        130deg
+        ,#DE1DDA,#319197 41.07%,#309100 96.05%);
+}
+
+.login{
+    height: 100%;
+    border: 2px solid rgb(38,38,38, .0);
+    border-right: none;
+    color: #C3DEBC;
+    background-clip: padding-box;
+    background-color: rgb(38,38,38);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.signup{
+    height: 100%;
+    border: 2px solid rgb(38,38,38, .0);
+    background-color: transparent; 
+    color: #C3DEBC;
+    cursor: pointer;   
+    transition: 0.5s;
+}
+.login:hover{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.signup:hover{
+   
+    border: 2px solid rgb(38,38,38, 1);
+    
+
+}
